@@ -1,0 +1,75 @@
+@import "variable.scss";
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One:wght@400');
+
+body {
+  background-color: #4A4A4A;
+  margin:0px
+}
+
+heading.Navigation {
+  display:flex;
+  padding: 10px 10px;
+  height: 50px;
+  width: inherit;
+  background-image: linear-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0.1));
+}
+
+.logo {
+  max-width: 225x;
+  font-family: 'Julius Sans One', sans-serif;
+  font-size:30px;
+  text-align: center;
+  margin-top:auto;
+  margin-bottom: auto;
+  color:white;
+}
+
+ul {
+  list-style-type: none;
+  margin-left: 20px;
+  margin-top:auto;
+  margin-bottom: auto;
+}
+
+li {
+  float: left;
+  padding: 10px 0px;
+  margin-right: 35px;
+}
+
+li:hover {
+  background-color: #8B8B8B;
+}
+
+li:active {
+  background-color: #3D3D3D;
+}
+
+li button {
+  background-color: rgba(255, 0, 0, 0);
+  border: 0px none;
+  font-family: 'Julius Sans One', sans-serif;
+  font-size:30px;
+  color:white;
+  text-decoration: none;
+  text-align: center;
+}
+
+
+
+.body {
+  display: block;
+  width:100%;
+  height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.body iframe {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0px;
+  width: 100%;
+  height: 100%;
+}
