@@ -190,18 +190,32 @@ function evaluate(operation, operand1, operand2){
   }else if(operation == '-'){
     return Number(operand2) - Number(operand1)
   }else if(operation == '/'){
-    try {
+    if((operand1 == '0') || (operand1 == null)){
+      return Number(operand2)
+    }else{
       return Number(operand2) / Number(operand1)
-    } catch (error) {
-      console.log('Invalid Operation division');
     }
   }else if(operation == '*'){
-    return Number(operand2) / Number(operand1)
+    return Number(operand2) * Number(operand1)
+  }
+}
+
+function updateDisplay(display){
+  if(operand1 === null){
+    display.innerHTML = ''
+  }else{
+    display.innerHTML = operand1;
   }
 }
 
 
 const display = document.querySelector('#lcd');
+const percentBtn = document.querySelector('#percent');
+const CEbtn = document.querySelector('#CE');
+const Cbtn = document.querySelector('#C');
+const bckSpcBtn = document.querySelector('#bckspc');
+const decimalBtn = document.querySelector('#addDot');
+const equalsBtn = document.querySelector('#equals');
 let numberInputBtns, operationBtns;
 
 numberInputBtns = document.querySelectorAll('.numberInput');
@@ -213,11 +227,7 @@ operationBtns = Array.from(operationBtns);
 numberInputBtns.forEach(element => {
   element.addEventListener('click', () => {
     inputNumber(element.innerText);
-    if(operand1 === null){
-      display.innerHTML = ''
-    }else{
-      display.innerHTML = operand1;
-    }
+    updateDisplay(display);
   })
 })
 
@@ -226,11 +236,47 @@ operationBtns.forEach(element => {
   element.addEventListener('click', () =>
   {
     inputOperation(element.innerText);
-    if(operand1 === null){
-      display.innerHTML = ''
-    }else{
-      display.innerHTML = operand1;
-    }
+    updateDisplay(display);
   })
+})
+
+percentBtn.addEventListener('click', () => {
+  if(operand1 != ''){
+    operand1 = `${Number(operand1) / 100}`
+  }
+  updateDisplay(display);
+})
+
+CEbtn.addEventListener('click', () => {
+  operand1 = '';
+  operand2 = '';
+  operation = '';
+  updateDisplay(display);
+})
+
+Cbtn.addEventListener('click', () => {
+  operand1 = '';
+  updateDisplay(display);
+})
+
+bckSpcBtn.addEventListener('click', () => {
+  if(operand1 != ''){
+    operand1 = operand1.slice(0, operand1.length - 1);
+  }
+  updateDisplay(display);
+})
+
+equalsBtn.addEventListener('click', () => {
+  operand1 = evaluate(operation, operand1, operand2);
+  updateDisplay(display)
+})
+
+decimalBtn.addEventListener('click', () => {
+  if(operand1 == ''){
+    operand1 = '0.'
+  }else{
+    operand1 = operand1 + '.'
+  }
+  updateDisplay(display);
 })
 
