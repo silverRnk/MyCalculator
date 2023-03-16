@@ -159,7 +159,6 @@ calculator.OnClickButton(OnClickButton.OnClickButton4);
 console.log('operand2 ' + calculator.params.operand2);
 
 */
-
 let operand1, operand2, operation
 operand1= operand2 = ''
 operantion = null;
@@ -186,7 +185,52 @@ function inputOperation(x){
 }
 
 function evaluate(operation, operand1, operand2){
-  if(operation == 'add'){
-    return Number(operand1) + Number(operand2)
+  if(operation == '+'){
+    return Number(operand2) + Number(operand1)
+  }else if(operation == '-'){
+    return Number(operand2) - Number(operand1)
+  }else if(operation == '/'){
+    try {
+      return Number(operand2) / Number(operand1)
+    } catch (error) {
+      console.log('Invalid Operation division');
+    }
+  }else if(operation == '*'){
+    return Number(operand2) / Number(operand1)
   }
 }
+
+
+const display = document.querySelector('#lcd');
+let numberInputBtns, operationBtns;
+
+numberInputBtns = document.querySelectorAll('.numberInput');
+numberInputBtns = Array.from(numberInputBtns);
+
+operationBtns = document.querySelectorAll('.operation');
+operationBtns = Array.from(operationBtns);
+
+numberInputBtns.forEach(element => {
+  element.addEventListener('click', () => {
+    inputNumber(element.innerText);
+    if(operand1 === null){
+      display.innerHTML = ''
+    }else{
+      display.innerHTML = operand1;
+    }
+  })
+})
+
+
+operationBtns.forEach(element => {
+  element.addEventListener('click', () =>
+  {
+    inputOperation(element.innerText);
+    if(operand1 === null){
+      display.innerHTML = ''
+    }else{
+      display.innerHTML = operand1;
+    }
+  })
+})
+
