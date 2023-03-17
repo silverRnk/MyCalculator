@@ -56,8 +56,15 @@ table {
   height: 135px;
 }
 
+/*
+===================================
+   LCD
+===================================
+*/
+
+
 #lcd {
-  display: block;
+  display: grid;
   background-color: var(--lcdColor);
   width: 95%;
   height: 80%;
@@ -66,7 +73,48 @@ table {
   margin-right: auto;
   border: 1px solid black;
   border-radius: 10px;
+  grid-template-columns: 30px 1fr;
+  grid-template-rows: repeat(3, 1fr);
 }
+
+#operand2Display{
+  grid-column: 2 / -1;
+  grid-row: span 1;
+  padding:5px;
+  align-self: stretch;
+  justify-self: stretch;
+  display: flex;
+  align-items: center;
+}
+
+#operand1Display{
+  grid-column: 2 / -1;
+  grid-row: 2 / 3;
+  padding:5px;
+  align-self: stretch;
+  justify-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+#operation{
+  grid-column: span 1;
+  grid-row: 2 / 3;
+  padding:5px;
+  align-self: stretch;
+  justify-self: stretch;
+  text-align: end;
+  display: flex;
+  align-items: center;
+}
+
+/*
+===================================
+   Butttons
+===================================
+*/
+
 
 .calculatorButton {
   width: 25%;
